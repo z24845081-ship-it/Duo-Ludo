@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F5F7FC">
+  <meta name="description" content="Download Duo Ludo for Android — a 100% offline, ad-free two-player board duel with Humo &amp; Robo modes, Orbit, Citadel, and Infinity maps, and Classic &amp; Modern dice.">
+  <meta property="og:title" content="Duo Ludo for Android — Download APK">
+  <meta property="og:description" content="Play 100% offline with Humo vs Humo or Humo vs Robo across three maps. Free, zero ads, no internet permission required.">
+  <meta property="og:type" content="website">
+  <title>Duo Ludo — Download Android APK</title>
+  <style>
+    :root {
+      --bg: #F5F7FC;
+      --bg-glow-1: rgba(79, 131, 232, 0.14);
+      --bg-glow-2: rgba(229, 111, 152, 0.14);
+      --surface: #FFFFFF;
+      --surface-soft: #EEF2FB;
+      --ink: #1C2436;
+      --muted: #5F6B84;
+      --line: rgba(31, 41, 68, 0.10);
+      --blue: #4F83E8;
+      --blue-deep: #2956B8;
+      --pink: #E56F98;
+      --pink-deep: #B9436F;
+      --navy: #19316D;
+      --gold: #EDB54A;
+      --violet: #8064D8;
+      --teal: #168E8A;
+      --shadow: 0 20px 46px rgba(25, 49, 109, 0.09);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #131926;
+        --bg-glow-1: rgba(79, 131, 232, 0.20);
+        --bg-glow-2: rgba(229, 111, 152, 0.18);
+        --surface: #1E2738;
+        --surface-soft: #263147;
+        --ink: #F1F5FC;
+        --muted: #9AA7C0;
+        --line: rgba(241, 245, 252, 0.10);
+        --shadow: 0 22px 50px rgba(0, 0, 0, 0.38);
+      }
+    }
+
+    [data-theme="dark"] {
+      --bg: #131926;
+      --bg-glow-1: rgba(79, 131, 232, 0.20);
+      --bg-glow-2: rgba(229, 111, 152, 0.18);
+      --surface: #1E2738;
+      --surface-soft: #263147;
+      --ink: #F1F5FC;
+      --muted: #9AA7C0;
+      --line: rgba(241, 245, 252, 0.10);
+      --shadow: 0 22px 50px rgba(0, 0, 0, 0.38);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(640px 460px at 8% -4%, var(--bg-glow-1), transparent 70%),
+        radial-gradient(560px 420px at 94% 6%, var(--bg-glow-2), transparent 68%),
+        var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand svg {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 6px 14px rgba(25, 49, 109, 0.18));
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-ghost:hover { transform: translateY(-1px); border-color: var(--blue); }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 34px;
+      padding: 26px 0 42px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--blue);
+      box-shadow: 0 6px 18px rgba(25, 49, 109, 0.05);
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+    }
+
+    h1 {
+      margin: 16px 0 12px;
+      font-size: clamp(2.1rem, 4.4vw, 3.3rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      font-weight: 850;
+    }
+
+    .accent-text {
+      background: linear-gradient(125deg, var(--blue), var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      margin: 0 0 22px;
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 56ch;
+    }
+
+    /* Download Card */
+    .download-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      min-height: 54px;
+      padding: 14px 26px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 100%);
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 1.04rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(79, 131, 232, 0.34);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
+    }
+
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(79, 131, 232, 0.42);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 54px;
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--surface-soft);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .btn-secondary:hover { border-color: var(--blue); transform: translateY(-1px); }
+
+    .release-meta {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .release-meta strong { color: var(--ink); }
+
+    .release-status {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .release-status.ready { color: var(--teal); font-weight: 600; }
+
+    .trust-strip {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .trust-chip {
+      font-size: 0.82rem;
+      font-weight: 650;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    /* Hero Device Mockup */
+    .phone-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone {
+      width: min(330px, 100%);
+      aspect-ratio: 9 / 15.2;
+      border-radius: 34px;
+      padding: 14px;
+      background: linear-gradient(155deg, #243668, #141E3C);
+      box-shadow: 0 28px 64px rgba(19, 36, 89, 0.28);
+      border: 2px solid rgba(255, 255, 255, 0.16);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .phone-screen {
+      flex: 1;
+      border-radius: 24px;
+      background: #F5F7FC;
+      color: #1F2737;
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .mock-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .mock-players {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .mock-pill {
+      flex: 1;
+      border-radius: 11px;
+      padding: 7px 9px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FFFFFF;
+      border: 1px solid rgba(31, 41, 68, 0.08);
+    }
+
+    .mock-pill i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .mock-board {
+      margin: 10px 0;
+      background: #FFFFFF;
+      border: 1px solid #E1E8F6;
+      border-radius: 18px;
+      padding: 10px;
+      box-shadow: 0 8px 20px rgba(31, 41, 68, 0.06);
+    }
+
+    .mock-board svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .mock-dice-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FFFFFF;
+      border: 1px solid #E1E8F6;
+      border-radius: 14px;
+      padding: 9px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .mock-die {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #4F83E8, #315FBC);
+      color: #FFFFFF;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    /* Sections */
+    .section {
+      padding: 26px 0 38px;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 6px;
+      font-size: clamp(1.45rem, 2.6vw, 2rem);
+      letter-spacing: -0.02em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      box-shadow: 0 10px 26px rgba(25, 49, 109, 0.05);
+    }
+
+    .card-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 1.03rem;
+      font-weight: 750;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    /* Install steps */
+    .step-num {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+    }
+
+    /* Config / Repo prompt bar if opened locally */
+    .repo-notice {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px dashed var(--line);
+      background: var(--surface-soft);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .repo-notice code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--ink);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 0 38px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; text-align: left; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .grid-4 { grid-template-columns: 1fr; }
+      .cta-row .btn-download,
+      .cta-row .btn-secondary { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Shared Duo Ludo SVG emblem -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="dl-blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#79CEFF"/><stop offset=".52" stop-color="#3588F5"/><stop offset="1" stop-color="#1952C7"/></linearGradient>
+      <linearGradient id="dl-pink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFBED7"/><stop offset=".52" stop-color="#F25F9E"/><stop offset="1" stop-color="#C92E74"/></linearGradient>
+      <linearGradient id="dl-tile" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EEFF"/></linearGradient>
+      <linearGradient id="dl-frame" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#213B82"/><stop offset="1" stop-color="#132459"/></linearGradient>
+      <symbol id="duo-ludo-logo" viewBox="0 0 48 48">
+        <rect x="1.5" y="1.5" width="45" height="45" rx="14.5" fill="url(#dl-frame)"/>
+        <rect x="4" y="4" width="40" height="40" rx="12" fill="url(#dl-tile)"/>
+        <rect x="5" y="5" width="38" height="38" rx="11" fill="none" stroke="#FFFFFF" stroke-opacity=".8" stroke-width="1"/>
+        <ellipse cx="16" cy="39.5" rx="6.6" ry="1.8" fill="#172B67" opacity=".12"/>
+        <ellipse cx="32" cy="39.5" rx="6.6" ry="1.8" fill="#172B67" opacity=".12"/>
+        <path d="M9.4 37.8c0-5.1 2.8-8.8 6.6-8.8s6.6 3.7 6.6 8.8c0 .8-.5 1.2-1.3 1.2H10.7c-.8 0-1.3-.4-1.3-1.2z" fill="url(#dl-blue)" stroke="#174AAB" stroke-width="1.25" stroke-linejoin="round"/>
+        <circle cx="16" cy="23.2" r="5.6" fill="url(#dl-blue)" stroke="#174AAB" stroke-width="1.25"/>
+        <path d="M25.4 37.8c0-5.1 2.8-8.8 6.6-8.8s6.6 3.7 6.6 8.8c0 .8-.5 1.2-1.3 1.2H26.7c-.8 0-1.3-.4-1.3-1.2z" fill="url(#dl-pink)" stroke="#A72E68" stroke-width="1.25" stroke-linejoin="round"/>
+        <circle cx="32" cy="23.2" r="5.6" fill="url(#dl-pink)" stroke="#A72E68" stroke-width="1.25"/>
+        <ellipse cx="14.1" cy="20.8" rx="2.1" ry="1.15" fill="#FFFFFF" opacity=".82" transform="rotate(-32 14.1 20.8)"/>
+        <ellipse cx="30.1" cy="20.8" rx="2.1" ry="1.15" fill="#FFFFFF" opacity=".82" transform="rotate(-32 30.1 20.8)"/>
+        <path d="m24 7.3 1.75 3.6 3.95.58-2.85 2.78.67 3.94L24 16.34l-3.52 1.86.67-3.94-2.85-2.78 3.95-.58z" fill="#F5C24C" stroke="#C58822" stroke-width=".85" stroke-linejoin="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <header class="wrap topbar">
+    <a class="brand" href="#top">
+      <svg aria-hidden="true"><use href="#duo-ludo-logo"/></svg>
+      <span>Duo Ludo</span>
+    </a>
+    <div class="top-actions">
+      <button type="button" class="btn-ghost" id="btnThemeToggle" aria-label="Toggle light or dark theme">
+        Theme
+      </button>
+      <a class="btn-ghost" id="navReleasesLink" href="#download" rel="noopener">
+        GitHub Releases
+      </a>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div>
+        <span class="pill">
+          <span class="pill-dot" aria-hidden="true"></span>
+          <span>Android App · 100% Offline</span>
+        </span>
+        <h1>A crisp two-player <span class="accent-text">Ludo duel</span> built for mobile.</h1>
+        <p class="lead">
+          Play pass-and-play against a friend (<strong>Humo vs Humo</strong>) or challenge
+          <strong>Robo</strong> across three difficulty tiers, three handcrafted maps, and Classic or adaptive Modern dice — completely offline with zero ads or tracking.
+        </p>
+
+        <div class="download-box" id="download">
+          <div class="cta-row">
+            <a class="btn-download" id="btnDownloadApk" href="#install" rel="noopener">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v12"/>
+                <path d="m7 10 5 5 5-5"/>
+                <path d="M5 20h14"/>
+              </svg>
+              <span id="btnDownloadLabel">Download Android APK</span>
+            </a>
+
+            <a class="btn-secondary" id="btnAllReleases" href="#install" rel="noopener">
+              All Releases
+            </a>
+
+            <button type="button" class="btn-secondary" id="btnCopyShare">
+              Copy Link
+            </button>
+          </div>
+
+          <div class="release-meta">
+            <span>Version: <strong id="metaVersion">v1.0.2</strong></span>
+            <span>File: <strong id="metaFile">APK via GitHub Releases</strong></span>
+            <span>Size: <strong id="metaSize">~18 MB</strong></span>
+            <span>Requires: <strong>Android 7.0+ (API 24)</strong></span>
+          </div>
+
+          <div class="release-status" id="releaseStatus">
+            Checking latest GitHub Release APK…
+          </div>
+
+          <div class="repo-notice" id="repoNotice" hidden>
+            Hosting on a custom domain or testing locally? Set <code>GITHUB_REPO = "owner/repo"</code> inside this HTML file or open with <code>?repo=owner/repo</code>.
+          </div>
+
+          <div class="trust-strip">
+            <span class="trust-chip">Zero Ads</span>
+            <span class="trust-chip">No Account Needed</span>
+            <span class="trust-chip">No Internet Permission</span>
+            <span class="trust-chip">Package: com.duoludo.game</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone-wrap" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-screen">
+            <div>
+              <div class="mock-head">
+                <span style="display:inline-flex;align-items:center;gap:6px;">
+                  <svg width="20" height="20"><use href="#duo-ludo-logo"/></svg>
+                  Duo Ludo
+                </span>
+                <span style="color:#5F6B84;">Orbit · 4 Tokens</span>
+              </div>
+              <div class="mock-players">
+                <div class="mock-pill">
+                  <span><i style="background:#4F83E8"></i>Humo</span>
+                  <span style="color:#4F83E8">2/4</span>
+                </div>
+                <div class="mock-pill">
+                  <span><i style="background:#E56F98"></i>Robo</span>
+                  <span style="color:#E56F98">1/4</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mock-board">
+              <svg viewBox="0 0 220 220">
+                <rect x="6" y="6" width="208" height="208" rx="22" fill="#F3F6FE" stroke="#DCE6FA" stroke-width="2"/>
+                <circle cx="110" cy="110" r="76" fill="none" stroke="#DCE6FA" stroke-width="18"/>
+                <circle cx="110" cy="110" r="76" fill="none" stroke="#4F83E8" stroke-opacity="0.22" stroke-width="18" stroke-dasharray="18 26"/>
+                <line x1="110" y1="34" x2="110" y2="86" stroke="#C9D9FA" stroke-width="12" stroke-linecap="round"/>
+                <line x1="110" y1="186" x2="110" y2="134" stroke="#F8CBD9" stroke-width="12" stroke-linecap="round"/>
+                <circle cx="110" cy="110" r="24" fill="#FFFFFF" stroke="#E1E8F6" stroke-width="3"/>
+                <path d="m110 99 3 6.2 6.8 1-4.9 4.8 1.2 6.8-6.1-3.2-6.1 3.2 1.2-6.8-4.9-4.8 6.8-1z" fill="#EDB54A"/>
+                <!-- Blue & Pink tokens -->
+                <circle cx="52" cy="60" r="10" fill="#4F83E8" stroke="#FFFFFF" stroke-width="2.5"/>
+                <circle cx="154" cy="48" r="10" fill="#4F83E8" stroke="#FFFFFF" stroke-width="2.5"/>
+                <circle cx="168" cy="160" r="10" fill="#E56F98" stroke="#FFFFFF" stroke-width="2.5"/>
+                <circle cx="110" cy="158" r="10" fill="#E56F98" stroke="#FFFFFF" stroke-width="2.5"/>
+                <!-- Boost & safe badges -->
+                <circle cx="34" cy="110" r="6" fill="#8E7CF0"/>
+                <circle cx="186" cy="110" r="6" fill="#EDB54A"/>
+              </svg>
+            </div>
+
+            <div class="mock-dice-bar">
+              <span>Humo's turn · Tap die</span>
+              <div class="mock-die">6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Everything Inside Duo Ludo</h2>
+        <p>Every board rule, visual theme, and customization runs natively offline on your Android device.</p>
+      </div>
+      <div class="grid-4">
+        <article class="card">
+          <div class="card-badge" style="background:linear-gradient(135deg,#4F83E8,#315FBC);">2P</div>
+          <h3>Humo &amp; Robo Modes</h3>
+          <p>Play two-player pass-and-play or face Robo across three smart levels: Chill, Smart, and Genius.</p>
+        </article>
+        <article class="card">
+          <div class="card-badge" style="background:linear-gradient(135deg,#E56F98,#B9436F);">3M</div>
+          <h3>Orbit, Citadel &amp; Infinity</h3>
+          <p>Three distinct boards with safe star sanctuaries, +3 lightning boosts, full-lap gate rules, and exact home entry.</p>
+        </article>
+        <article class="card">
+          <div class="card-badge" style="background:linear-gradient(135deg,#EDB54A,#C58822);">🎲</div>
+          <h3>Classic &amp; Modern Dice</h3>
+          <p>Switch between strict 16.67% Classic odds or transparent adaptive Modern Dice with live probability insights.</p>
+        </article>
+        <article class="card">
+          <div class="card-badge" style="background:linear-gradient(135deg,#8064D8,#5C43AD);">Aa</div>
+          <h3>Themes &amp; Typography</h3>
+          <p>Customize board themes, player colors, UI palettes, sound/music, and 5 bundled fonts with text size &amp; weight controls.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="install">
+      <div class="section-head">
+        <h2>How to Install on Android</h2>
+        <p>Installing takes less than a minute directly on any Android 7.0+ phone or tablet.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="step-num">1</span>
+          <h3>Download the APK</h3>
+          <p>Tap <strong>Download Android APK</strong> above to fetch the latest `.apk` file directly from this repository's GitHub Releases.</p>
+        </article>
+        <article class="card">
+          <span class="step-num">2</span>
+          <h3>Open &amp; Allow Install</h3>
+          <p>Tap the downloaded `.apk` in your browser or Files app. If Android asks, tap <strong>Settings</strong> and allow installs from your browser once.</p>
+        </article>
+        <article class="card">
+          <span class="step-num">3</span>
+          <h3>Play Completely Offline</h3>
+          <p>Tap <strong>Install</strong> and launch Duo Ludo. All maps, sound effects, fonts, and stats work offline with no internet permission.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span><strong>Duo Ludo</strong> · Package <code>com.duoludo.game</code> · v1.0.2</span>
+    <span id="footerRepo">Powered by GitHub Releases &amp; GitHub Pages</span>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // Optional manual override if hosted on a custom domain (e.g. "yourname/duo-ludo"):
+      const GITHUB_REPO = '';
+
+      const $ = (id) => document.getElementById(id);
+      const btnDownload = $('btnDownloadApk');
+      const btnDownloadLabel = $('btnDownloadLabel');
+      const btnAllReleases = $('btnAllReleases');
+      const navReleasesLink = $('navReleasesLink');
+      const metaVersion = $('metaVersion');
+      const metaFile = $('metaFile');
+      const metaSize = $('metaSize');
+      const releaseStatus = $('releaseStatus');
+      const repoNotice = $('repoNotice');
+      const footerRepo = $('footerRepo');
+
+      // Theme toggle
+      const btnThemeToggle = $('btnThemeToggle');
+      let theme = localStorage.getItem('duoludo.landing.theme') || '';
+      if (theme === 'dark' || theme === 'light') {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      btnThemeToggle.addEventListener('click', function () {
+        const currentDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+          (!document.documentElement.hasAttribute('data-theme') &&
+           window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        const next = currentDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('duoludo.landing.theme', next);
+      });
+
+      // Share / Copy link
+      $('btnCopyShare').addEventListener('click', async function () {
+        const btn = this;
+        const url = window.location.href;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(url);
+            btn.textContent = 'Copied!';
+          } else {
+            btn.textContent = url;
+          }
+        } catch (e) {
+          btn.textContent = 'Link Ready';
+        }
+        setTimeout(() => { btn.textContent = 'Copy Link'; }, 1800);
+      });
+
+      function detectRepo() {
+        const params = new URLSearchParams(window.location.search);
+        const qRepo = (params.get('repo') || '').trim();
+        if (/^[^/\s]+\/[^/\s]+$/.test(qRepo)) return qRepo;
+        if (/^[^/\s]+\/[^/\s]+$/.test(GITHUB_REPO.trim())) return GITHUB_REPO.trim();
+
+        const host = window.location.hostname.toLowerCase();
+        if (host.endsWith('.github.io')) {
+          const owner = host.slice(0, -'.github.io'.length);
+          const parts = window.location.pathname.split('/').filter(Boolean);
+          const repo = parts.length > 0 ? parts[0] : (owner + '.github.io');
+          if (owner && repo) return owner + '/' + repo;
+        }
+        return '';
+      }
+
+      function pickApkAsset(assets) {
+        if (!Array.isArray(assets)) return null;
+        const apks = assets.filter((a) => a && typeof a.name === 'string' && a.name.toLowerCase().endsWith('.apk'));
+        if (!apks.length) return null;
+        return apks.find((a) => !/debug/i.test(a.name)) || apks[0];
+      }
+
+      function formatMB(bytes) {
+        if (!bytes || bytes <= 0) return '~18 MB';
+        return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+      }
+
+      async function loadRelease() {
+        const repoSlug = detectRepo();
+        if (!repoSlug) {
+          releaseStatus.textContent = 'Enable GitHub Pages on this repository (or append ?repo=owner/repo) to auto-link your latest GitHub Release APK.';
+          repoNotice.hidden = false;
+          return;
+        }
+
+        const releasesHome = 'https://github.com/' + repoSlug + '/releases';
+        const latestPage = releasesHome + '/latest';
+        btnAllReleases.href = releasesHome;
+        navReleasesLink.href = releasesHome;
+        btnDownload.href = latestPage;
+        footerRepo.textContent = 'Repository: ' + repoSlug + ' · GitHub Releases';
+
+        try {
+          let release = null;
+          const latestRes = await fetch('https://api.github.com/repos/' + repoSlug + '/releases/latest', {
+            headers: { 'Accept': 'application/vnd.github+json' }
+          });
+
+          if (latestRes.ok) {
+            release = await latestRes.json();
+          }
+
+          if (!release || !pickApkAsset(release.assets)) {
+            const listRes = await fetch('https://api.github.com/repos/' + repoSlug + '/releases?per_page=5', {
+              headers: { 'Accept': 'application/vnd.github+json' }
+            });
+            if (listRes.ok) {
+              const list = await listRes.json();
+              if (Array.isArray(list)) {
+                release = list.find((r) => !r.draft && pickApkAsset(r.assets)) || list.find((r) => !r.draft) || release;
+              }
+            }
+          }
+
+          if (!release) {
+            releaseStatus.textContent = 'No GitHub Release found yet. Upload your APK in GitHub Releases and refresh this page.';
+            return;
+          }
+
+          const tag = release.tag_name || release.name || 'v1.0.2';
+          metaVersion.textContent = tag;
+          const apk = pickApkAsset(release.assets);
+
+          if (apk && apk.browser_download_url) {
+            btnDownload.href = apk.browser_download_url;
+            btnDownload.setAttribute('download', apk.name);
+            btnDownloadLabel.textContent = 'Download APK (' + tag + ')';
+            metaFile.textContent = apk.name;
+            metaSize.textContent = formatMB(apk.size);
+            const dateStr = release.published_at ? new Date(release.published_at).toLocaleDateString() : 'Latest';
+            releaseStatus.className = 'release-status ready';
+            releaseStatus.textContent = 'Direct APK ready from GitHub Release ' + tag + ' · Published ' + dateStr;
+          } else {
+            btnDownload.href = release.html_url || latestPage;
+            btnDownloadLabel.textContent = 'Open Release ' + tag;
+            releaseStatus.textContent = 'Release ' + tag + ' exists, but no .apk file is attached yet. Attach your .apk in GitHub Releases.';
+          }
+        } catch (err) {
+          releaseStatus.textContent = 'Tap Download to open GitHub Releases for ' + repoSlug + '.';
+        }
+      }
+
+      loadRelease();
+    })();
+  </script>
+</body>
+</html>

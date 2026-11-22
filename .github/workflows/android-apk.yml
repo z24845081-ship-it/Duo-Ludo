@@ -70,15 +70,15 @@ jobs:
       - name: Build Debug APK
         run: gradle assembleDebug --no-daemon
 
-      - name: Run Unit and Robolectric Tests
-        run: gradle :app:testDebugUnitTest --no-daemon
-
       - name: Upload Debug APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: Duo-Ludo-Debug-APK
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+
+      - name: Run Unit and Robolectric Tests
+        run: gradle :app:testDebugUnitTest --no-daemon
 
       - name: Check release signing secrets
         id: release_check
@@ -101,7 +101,7 @@ jobs:
           STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
-          printf '%s' "${KEYSTORE_BASE64}" | base64 -d > "${KEYSTORE_PATH}"
+          printf '%s' "${KEYSTORE_BASE64}" | tr -d '[:space:]' | base64 -d > "${KEYSTORE_PATH}"
           gradle assembleRelease --no-daemon
 
       - name: Upload Release APK artifact
