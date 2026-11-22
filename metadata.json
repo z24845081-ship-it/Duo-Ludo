@@ -1,0 +1,6 @@
+{
+  "name": "Duo Ludo",
+  "description": "A self-contained two-player board duel with Humo and Robo modes, three distinctive maps, Classic and Modern dice, and offline typography customization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

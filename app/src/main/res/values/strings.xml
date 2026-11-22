@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Duo Ludo</string>
+    <string name="exit_dialog_title">Exit Duo Ludo?</string>
+    <string name="exit_dialog_message">Are you sure you want to close Duo Ludo?</string>
+    <string name="exit_dialog_confirm">Exit</string>
+    <string name="exit_dialog_cancel">Stay</string>
+    <string name="webview_error_title">Unable to load Duo Ludo</string>
+    <string name="webview_error_action">Reload</string>
+</resources>
