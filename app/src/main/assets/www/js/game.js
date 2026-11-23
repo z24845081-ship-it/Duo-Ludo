@@ -214,10 +214,6 @@
       R.setUI({ turn: st.turn, phase: 'idle', canRoll: false, hint: '' });
       await R.moveDiceTo(st.turn, false);
       if (!alive(id)) return;
-      if (cfg.mode === 'humo') {
-        await waitForHandover(id, st.turn);
-        if (!alive(id)) return;
-      }
     }
     beginTurn(id);
   }
